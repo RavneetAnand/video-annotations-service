@@ -1,0 +1,36 @@
+{
+  "name": "books-service",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "lab -l",
+    "lint": "eslint .",
+    "security": "npm audit",
+    "precommit": "npm run lint",
+    "prepush": "npm run test"
+  },
+  "author": "Ravneet",
+  "license": "ISC",
+  "description": "Service crypto comparison.",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "chai": "^4.3.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mocha": "^9.1.1",
+    "mysql2": "^2.2.5",
+    "node-schedule": "^2.0.0",
+    "request": "^2.88.2",
+    "supertest": "^6.1.6"
+  },
+  "devDependencies": {
+    "eslint": "^4.7.1",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-private-props": "^0.3.0",
+    "eslint-plugin-security": "^1.4.0",
+    "lab": "^14.1.2",
+    "rewire": "^3.0.2",
+    "sinon": "^4.1.2"
+  }
+}
