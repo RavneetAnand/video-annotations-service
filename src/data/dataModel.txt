@@ -1,0 +1,49 @@
+entity Team {
+  id Long,
+  name String,
+  pointsScoredPerGame Float,
+  netPassingYardsPerGame Integer,
+  rushingYardsPerGame Integer
+}
+
+entity Player {
+  id Long,
+  firstName String,
+  lastName String,
+  team (Team)
+}
+
+entity GameStatistics {
+  id Long,
+  team (Team),
+  opponentName String,
+  gameDate LocalDate,
+  pointsScored Integer,
+  netPassingYards Integer,
+  rushingYards Integer
+}
+
+entity PlayerStatistics {
+  id Long,
+  player (Player),
+  game (GameStatistics),
+  passingYardsPerGame Float,
+  touchdownsPerGame Float,
+  rushingYardsPerGame Float,
+  rushingAttemptsPerGame Float,
+  receivingYardsPerGame Float,
+  receptionsPerGame Float,
+  rushingTouchdowns Integer,
+  receivingTouchdowns Integer,
+  odds Float
+}
+
+relationship ManyToOne {
+  PlayerStatistics{player} to Player{statistics},
+  PlayerStatistics{game} to GameStatistics{playerStatistics},
+  Player{team} to Team{players}
+}
+
+relationship OneToMany {
+  Team{gameStatistics} to GameStatistics{team}
+}

@@ -1,24 +1,28 @@
-# Books service
+# Players service
 
 ============================
 
-Books microservice runs on Port number - 3903
+Players microservice runs on Port number - 3903
 
-## Books
+## players
 
-Books supports the following operations :
+players supports the following operations :
 
-- ### getBooksList
-#### Description : Get the books list from the database. This method is called from the API route "/getBooks".
+- ### getplayersList
+
+#### Description : Get the players list from the database. This method is called from the API route "/getplayers".
 
 - ### authenticateUser
+
 #### Description : Provide token after the user validation. This method is called from the API route "/authenticate".
 
 - ### Database configuration
-It can be set in the file server.js.
+
+  It can be set in the file server.js.
 
 - ### API
-URLs to fetch data are defined in the file api/routes.js
+  URLs to fetch data are defined in the file api/routes.js
 
-### `npx mocha books.test.js`
+### `npx mocha players.test.js`
+
 Launches the test runner in the interactive watch mode using mocha plugin.
