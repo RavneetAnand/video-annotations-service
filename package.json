@@ -2,8 +2,9 @@
   "name": "players-service",
   "version": "1.0.0",
   "main": "src/server.js",
+  "type": "module",
   "scripts": {
-    "start": "node src/server.js",
+    "start": "node --import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));' src/server.ts",
     "test": "lab -l",
     "lint": "eslint .",
     "security": "npm audit",
