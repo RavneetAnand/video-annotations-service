@@ -42,15 +42,20 @@ const connectToMySqlServer = async (options: Options) => {
   };
 
   // Create the connection to database
-  mysql.createConnection(config);
-  const pool = mysql.createPool(config);
+  try {
+    mysql.createConnection(config);
 
-  // Get a Promise wrapped instance of that pool
-  const promisePool = pool.promise();
-  await promisePool.query('select 1');
+    const pool = mysql.createPool(config);
 
-  console.log('Connected to the MySQL server.');
-  options.db_mysql_server.connection = promisePool;
+    // Get a Promise wrapped instance of that pool
+    const promisePool = pool.promise();
+    await promisePool.query('select 1');
+
+    console.log('Connected to the MySQL server.');
+    options.db_mysql_server.connection = promisePool;
+  } catch (err: any) {
+    console.error('Error connecting to MySQL server' + err.message);
+  }
 };
 
 /**
@@ -58,14 +63,18 @@ const connectToMySqlServer = async (options: Options) => {
  * @param {*} options Object containing details of the service.
  */
 const startService = (options: Options) => {
-  app.use(express.json());
-  app.use(cors());
+  try {
+    app.use(express.json());
+    app.use(cors());
 
-  routes(app);
+    routes(app);
 
-  app.listen(options.service.port, () => {
-    console.log('Server listening on the port: ' + options.service.port);
-  });
+    app.listen(options.service.port, () => {
+      console.log('Server listening on the port: ' + options.service.port);
+    });
+  } catch (err: any) {
+    console.error('Error starting the service' + err.message);
+  }
 };
 
 /**
@@ -74,7 +83,7 @@ const startService = (options: Options) => {
  * @returns {Promise<void>}
  */
 async function start(options: Options) {
-  await connectToMySqlServer(options);
+  // await connectToMySqlServer(options);
 
   playersService(options);
 
