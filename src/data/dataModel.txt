@@ -1,22 +1,35 @@
 entity Team {
   id Long,
   name String,
+  teamSpread String,
   pointsScoredPerGame Float,
-  netPassingYardsPerGame Integer,
-  rushingYardsPerGame Integer
+  netPassingYardsPerGame Float,
+  rushingYardsPerGame Float
 }
 
 entity Player {
   id Long,
   firstName String,
   lastName String,
-  team (Team)
+  team (Team),
+  passingLine String,
+  rushingLine String,
+  receivingLine String,
+  passingYardsPerGame Float,
+  touchdownsPerGame Float,
+  rushingYardsPerGame Float,
+  rushingAttemptsPerGame Float,
+  receivingYardsPerGame Float,
+  receptionsPerGame Float,
+  odds Float,
+  rushingTouchdowns Integer,
+  receivingTouchdowns Integer,
 }
 
 entity GameStatistics {
   id Long,
   team (Team),
-  opponentName String,
+  opponentTeamId Integer,
   gameDate LocalDate,
   pointsScored Integer,
   netPassingYards Integer,
@@ -27,15 +40,12 @@ entity PlayerStatistics {
   id Long,
   player (Player),
   game (GameStatistics),
-  passingYardsPerGame Float,
-  touchdownsPerGame Float,
-  rushingYardsPerGame Float,
-  rushingAttemptsPerGame Float,
-  receivingYardsPerGame Float,
-  receptionsPerGame Float,
-  rushingTouchdowns Integer,
-  receivingTouchdowns Integer,
-  odds Float
+  passingYards Integer,
+  rushingYards Integer,
+  receivingYards Integer,
+  touchDowns Integer,
+  attempts Integer,
+  receptions Integer,
 }
 
 relationship ManyToOne {
