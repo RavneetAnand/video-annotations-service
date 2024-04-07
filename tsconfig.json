@@ -1,22 +1,14 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
+    "module": "CommonJS",
     "esModuleInterop": true,
     "target": "ESNext",
     "moduleResolution": "node",
-    "outDir": "dist",
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "isolatedModules": false,
-    "strict": true,
-    "noImplicitAny": true,
-    "useUnknownInCatchVariables": false,
-    "inlineSourceMap": true,
-    "resolveJsonModule": true
+    "outDir": "dist"
   },
   "ts-node": {
     "esm": true,
     "experimentalSpecifierResolution": "node"
   },
-  "lib": ["esnext"]
+  "exclude": ["node_modules", "**/*.test.ts"]
 }
