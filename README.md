@@ -64,41 +64,39 @@ For test purpose, you can access the API route with this object in the body:
 
 `GET /videos`: Retrieve all videos. This endpoint allows fetching a list of all available video metadata in the system.
 `POST /videos`: Create a new video entry. Use this route to add new video metadata to the system. This route can accept these properties in the body:
-
-`{
+```json
+{
     videoId: string;
     title: string;
     description: string;
     url: string;
     duration: number;
-}`
-
+}
+```
 `DELETE /videos/:videoId`: Delete a specific video by ID. This route allows removing a video from the system based on its unique identifier.
 
 ### Annotations
 
 `GET /annotations/:videoId`: Get all annotations for a specific video by the video ID. This endpoint fetches annotations related to a given video.
 `POST /annotations`: Create annotations for a video. This route is used to add new annotations to a video. This route can accept these properties in the body:
-
-`{
+```json
+{
     videoId: string;
     annotationTypeId: number;
     startTime: number;
     endTime: number;
     notes: string;
-}`
-
+}```
 `PUT /annotations`: Update video annotations. This endpoint allows modifying existing annotations. This route can accept these properties in the body:
-
-`{
+```json
+{
     annotationId: number;
     videoId: number;
     annotationTypeId: number;
     startTime: number;
     endTime: number;
     notes: string;
-}`
-
+}```
 `DELETE /annotations/:annotationId`: Delete a specific annotation by ID. Use this route to remove an annotation from a video.
 
 ## Usage
